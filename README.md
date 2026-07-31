@@ -21,11 +21,11 @@ jobs:
         working-directory: terraform
 
     steps:
-      # 1️⃣ Checkout the repository
+      # 1 Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Configure AWS credentials
+      # 2 Configure AWS credentials
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -33,25 +33,25 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
 
-      # 3️⃣ Setup Terraform
+      # 3 Setup Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.9.0
 
-      # 4️⃣ Initialize Terraform
+      # 4 Initialize Terraform
       - name: Terraform Init
         run: terraform init -input=false
 
-      # 5️⃣ Validate Terraform configuration
+      # 5 Validate Terraform configuration
       - name: Terraform Validate
         run: terraform validate
 
-      # 6️⃣ Plan Terraform changes
+      # 6 Plan Terraform changes
       - name: Terraform Plan
         run: terraform plan -out=tfplan
 
-      # 7️⃣ Apply Terraform (only on main branch)
+      # 7 Apply Terraform (only on main branch)
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve tfplan
