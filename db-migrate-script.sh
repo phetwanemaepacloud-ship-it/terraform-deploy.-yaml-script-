@@ -37,29 +37,37 @@ export RDS_DB_PASSWORD=$(echo $SECRET_JSON | jqr-password')
 
 # Install jq if not available (for JSON parsing)
 sudo yum install -y jq
+
 # Retrieve secret from Secrets Manager
 SECRET_JSON-$(aws secretsmanager get-secret-value \
 --secret-id $(SECRET_NAME} \
 --region ${AWS_REGION} \
 --query SecretString \
 --output text)
+
 # Parse username and password from JSON
 export RDS_DB_PASSWORD=$(echo $SECRET JSON | jq -r 'password')
+
 # Install Flyway and run database migrations
+
 # Update all packages
 sudo yum update -y
+
 # Navigate to a consistent directory
 cd /home/ec2-user
+
 # Download and extract Flyway
 sudo wget -q0- https://download.red-gate.com/maven/release/com/redgate/flyway/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}-linux-x64.tar.gz | tar -xvz && sudo In-s
+
 # Create the SQL directory for migrations
 sudo mkdir -p sql
+
 # Download the migration SQL script from AWS 53
 sudo aws 3 cp ${S3_URI} sql/
+
 # Run Flyway migration
 sudo flyway -url-jdbc:mysql://${RDS ENDPOINT):3306/${RDS_DB_NAME} PallowPublicKeyRetrieval=true \
 -user=${RDS_DB_USERNAME} \
 -password="${RDS_DB_PASSWORD}" \
 -locations filesystem:sql\
 migrate
-You have Docker installed on your system. Do you want to
