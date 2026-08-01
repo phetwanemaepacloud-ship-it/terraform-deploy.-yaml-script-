@@ -1,6 +1,8 @@
 #1/bin/bash
 
+=======================================
 * Define environment variables
+=======================================
 
 # Set basic environment variables
 export 53_URI=s3://dev-aosnote-webfiles/project-2-assets/V1_nest.sql' export
@@ -11,7 +13,9 @@ export FLYWAY_VERSION='11.15.0
 export SECRET_NAME=test-dev-nest-secrets'
 export AWS REGION=us-east-1'
 
+=======================================
 #Verify all environment variables are set
+=======================================
 
 # Verify all variables are set echo "S3_URI: $S3_URI"
 echo "RDS ENDPOINT: $RDS ENDPOINT"
@@ -19,7 +23,9 @@ echo "RDS_DB_NAME: $RDS_DB_NAME"
 echo "RDS_DB_USERNAME: $RDS_DB_USERNAME" echo "FLYWAY_VERSION: $FLYWAY_VERSION" echo "SECRET_NAME: $SECRET_NAME"
 echo "AWS_REGION: SAWS_REGION"
 
+=======================================
 # Retrieve RDS database credentials from AWS Secrets Manager
+=======================================
 
 # Install jq if not available (for JSON parsing)
 sudo yum install -y jq
@@ -32,8 +38,9 @@ SECRET_JSON=$(aws secretsmanager get-secret-value \
 # Parse username and password from JSON
 export RDS_DB_PASSWORD=$(echo $SECRET_JSON | jqr-password')
 
+=======================================
 # Install Flyway and run database migrations
-
+=======================================
 
 # Install jq if not available (for JSON parsing)
 sudo yum install -y jq
