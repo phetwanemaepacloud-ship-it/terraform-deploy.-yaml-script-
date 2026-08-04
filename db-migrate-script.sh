@@ -5,12 +5,12 @@
 =======================================
 
 # Set basic environment variables
-export 53_URI=s3://dev-aosnote-webfiles/project-2-assets/V1_nest.sql' export
-RDS_ENDPOINT="dev-nest-db.cu2idoenakwo.us-east-1.rds.amazonaws.com'
+export 53_URI=s3://dev' export
+RDS_ENDPOINT="us-east-1.rds.amazonaws.com'
 export RDS_DB_NAME='applicationdb'
 export RDS_DB_USERNAME='admin'
 export FLYWAY_VERSION='11.15.0
-export SECRET_NAME=test-dev-nest-secrets'
+export SECRET_NAME=test-dev-secrets'
 export AWS REGION=us-east-1'
 
 =======================================
@@ -64,7 +64,7 @@ sudo yum update -y
 cd /home/ec2-user
 
 # Download and extract Flyway
-sudo wget -q0- https://download.red-gate.com/maven/release/com/redgate/flyway/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}-linux-x64.tar.gz | tar -xvz && sudo In-s
+sudo wget -q0- https://download.red-gate.com/maven/release/com/redgate/flyway/flyway-commandline/${FLYWAY_VERSION}/flyway-commandline-${FLYWAY_VERSION}-linux-x64.tar.gz |
 
 # Create the SQL directory for migrations
 sudo mkdir -p sql
