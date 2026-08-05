@@ -44,38 +44,38 @@ data "aws_availability_zones" "available_zones" {}
 
 #Public subnets (internet-facing resources) 
 resource "aws_subnet" "public_subnet_az1" { 
-  vpc_id                  =
-  cidr_block              =
-  availability zone       =
-  map_public_ip_on_launch = #
+  vpc_id                  = aws_vpc.vpc.id
+  cidr_block              = var.public_subnet_az1_cidr
+  availability zone       = data.aws_availability_zones.available_zones.names[0]
+  map_public_ip_on_launch = true
 
   tags = { 
-    Name = #
+    Name = "$(var.environment)-public_subnet_az1"
   }
 }
 
 resource "aws_subnet" "public_subnet_az2" {
-  vpc_id                  = #
-  cidr_block              = #
-  availability_zone       = #
-  map_public_ip_on_launch = #
+  vpc_id                  = aws_vpc.vpc.id
+  cidr_block              = var.public_subnet_az1_cidr
+  availability zone       = data.aws_availability_zones.available_zones.names[1]
+  map_public_ip_on_launch = true
 
   tags = {
-    Name = #
+    Name = "$(var.environment)-public_subnet_az2"
   }
 } 
 
 # Public route table routes traffic to the internet gateway 
 resource "aws_route_table" "public route_table" {
-  vpc_id = #
+  vpc_id = aws_vpc.vpc.id
   
   route {
-   cidr_block = # 
-   gateway_id = #
+   cidr_block = 0.0.0.0/0
+   gateway_id = aws_internet_gateway.internet_gateway.id
   }
 
   tags = {
-    Name = #
+    Name = "$(var.environment)-rtb-public" 
   }
 } 
 
@@ -93,48 +93,48 @@ resource "aws_route_table_association" "public_subnet_az2_rt_association" {
 
 # Private app subnets (application tier - ECS, EKS, EC2) 
 resource "aws_subnet" "private_app_subnet_az1" {
-  vpc_id                  = #
+  vpc_id                  = aws_vpc.vpc.id
   cidr_block              = #
   availability_zone       = #
-  map_public_ip_on_launch = #
+  map_public_ip_on_launch = false
 
   tags = {
-    Name = #
+    Name = "$(var.environment)-vpc
   }
 } 
 
 resource "aws_subnet" "private_app_subnet_az2" {
-  vpc_id                  = #
+  vpc_id                  = aws_vpc.vpc.id
   cidr_block              = #
   availability_zone       = #
-  map_public_ip_on_launch = #
+  map_public_ip_on_launch = false
 
   tags = { 
-    Name = #
+    Name = "$(var.environment)-vpc
   }
 } 
 
 
 # Private data subnets (database tier RDS, ElastiCache) 
 resource "aws_subnet" "private_data_subnet_az1" {
-  vpc_id                  = #
+  vpc_id                  = aws_vpc.vpc.id
   cidr_block              = #
   availability_zone       = # 
-  map_public_ip_on_launch = #
+  map_public_ip_on_launch = false
 
   tags = {
-  Name = #
+  Name = "$(var.environment)-vpc
   }
 } 
 
 resource "aws_subnet" "private_data_subnet_az2" {
-  vpc_id                  = #
+  vpc_id                  = aws_vpc.vpc.id
   cidr_block              = #
   availability_zone       = #
-  map_public_ip_on_launch = #
+  map_public_ip_on_launch = false
 
   tags = {
-    Name = #
+    Name = "$(var.environment)-vpc
   }
 } 
 
