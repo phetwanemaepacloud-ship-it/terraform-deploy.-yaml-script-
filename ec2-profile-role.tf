@@ -10,14 +10,20 @@ resource "aws_iam_role" "s3_full_access_role" {
         Effect = "Allow"
         Principal = { 
           Service = "ec2.amazonaws.com"
-]
-}) }
+        }
+      ) 
+    ] 
+ }} 
+} 
+
 # Attach 53 full access policy
-resource "aws_iam_role_policy_attachment" "53_full_access_policy_attachment" { role
-}
-= aws_iam_role.s3_full_access_role.name
-policy_arn = "arn:aws: iam::aws: policy/AmazonS3FullAccess"
+resource "aws_iam_role_policy_attachment" "53_full_access_policy_attachment" { 
+  role       = aws_iam_role.s3_full_access_role.name
+  policy_arn = "arn:aws: iam::aws: policy/AmazonS3FullAccess"
+} 
+
 # Instance profile for EC2 to assume role
-resource "aws_iam_instance_profile" "s3_full_access_instance_profile" { name = "${var.environment)-${var.project_name}-instance-profile"
-role = aws_iam_role.s3_full_access_role.name
+resource "aws_iam_instance_profile" "s3_full_access_instance_profile" { 
+  name = "${var.environment)-${var.project_name}-instance-profile"
+  role = aws_iam_role.s3_full_access_role.name
 
