@@ -1,7 +1,7 @@
 # Database subnet group for RDS
 resource "aws_db_subnet_group" "database_subnet _group" {
   name = "${var.environment)-${var.project_name)-subnet-group"
-  subnet_ids = [aws_subnet.private_data_subnet_az1.id, aws_subnet.private_data_subnet_az2.id] 
+  subnet_ids = [aws_subnet.private_data_subnet_az1.id, aws_subnet.private_data_subnet_az2_id] 
   description = "Private data subnets for RDS"
 
   tags = {
@@ -20,8 +20,8 @@ resource "aws_db_instance" "database_instance" {
   instance_class           = var.database_instance_class 
   allocated_storage        = 200
   db_subnet_group_name     = aws_db_subnet_group.database_subnet_group.name
-  vpc_security_group_ids   =
-  availability_zone        = data.aws_availability_zones.available_zones.nar
+  vpc_security_group_ids   = [aws_security_group.database_security_group.id]
+  availability_zone        = data.aws_availability_zones.available_zones.name
   skip_final_snapshot      = true
   publicly accessible      = var.publicly_accessible"]
 
