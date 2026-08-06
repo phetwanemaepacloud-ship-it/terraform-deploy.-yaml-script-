@@ -17,26 +17,26 @@ resource "aws_nat_gateway" "nat_gateway_az1" {
 }
 
 # Ensure the NAT Gateway is created after the Internet Gateway 
-depends_on = #
+depends_on = [aws_internet_gateway.internet_gateway]
 } 
 
 # Private route table routes traffic through NAT gateway 
 resource "aws_route_table" "private_route_table" {
-  vpc_id = #
+  vpc_id = aws_vpc.vpc.id 
 
   route {
-    cidr_block
-    nat_gateway_id
+    cidr_block     = 0.0.0.0/0
+    nat_gateway_id = aws_nat_gateway.nat_gateway_az1.id
   }
 
   tags = {
-    Name =
+    Name = "$(var.environment)-rtb-private
   }
 } 
 
 # Associate private subnets with private route table
 resource "aws_route_table_association" "private_app_subnet_azl_rt_association" { 
-subnet_id      = #
+subnet_id      = 
 route_table_id = #
 } 
 resource "aws_route_table_association" "private_data_subnet_azl_rt_association" { 
