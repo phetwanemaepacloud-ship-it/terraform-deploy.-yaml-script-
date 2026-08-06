@@ -1,6 +1,6 @@
 #Environment
 region            = "region" 
-project name      = "apl" 
+project name      = "app" 
 environment       = "dev" 
 project_directory = "app-name" 
 
