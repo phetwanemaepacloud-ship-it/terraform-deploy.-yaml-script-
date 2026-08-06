@@ -1,15 +1,15 @@
 # Elastic IP for NAT gateway 
 resource "aws_eip" "eip1" { 
-  domain= #
+  domain= "vpc"
 
   tags = {
-    Name = #
+    Name = "$(var.environment)-eip-1"
   } 
 } 
 
 # NAT gateway for private subnet internet access 
 resource "aws_nat_gateway" "nat_gateway_az1" { 
-  allocation_id = #
+  allocation_id = aws_eip.eip1.id
   subnet_id     =
 
   tags = {
