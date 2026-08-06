@@ -10,10 +10,10 @@ resource "aws_eip" "eip1" {
 # NAT gateway for private subnet internet access 
 resource "aws_nat_gateway" "nat_gateway_az1" { 
   allocation_id = aws_eip.eip1.id
-  subnet_id     =
+  subnet_id     = aws_subnet.public_subnet_az1.id
 
   tags = {
-    Name = #
+    Name = "$(var.environment)-natgw-az1" 
 }
 
 # Ensure the NAT Gateway is created after the Internet Gateway 
