@@ -88,3 +88,30 @@ variable "publicly accessible" {
 description = "Make RDS publicly accessible"
 type = bool
 
+#EC2
+variable "amazon_linux_ami_id" {
+description = "Amazon Linux AMI ID"
+type        = string
+}
+variable "ecz_instance_type" {
+description = "EC2 instance type (e.g., t3.micro)"
+type        = string
+}
+variable "flyway_version" {
+description ="Flyway CLI version"
+type.       = string
+}
+variable "sql_script_s3_uri" {
+description = "53 URI for SQL migration script"
+type        = string
+}
+
+# ACM
+variable "domain_name" {
+description = "Primary domain name"
+type        = string
+}
+variable "alternative_names" {
+description = "Alternative domain names (SANs)"
+type        = string
+}
