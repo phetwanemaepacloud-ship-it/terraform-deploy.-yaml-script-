@@ -57,3 +57,7 @@ variable "private_data_subnet_az2_cidr" {
   type = string 
 }
 
+# Secret Management 
+variable "secret_name" {
+  description = "Secret_Manager_secret_name" 
+  type = string
