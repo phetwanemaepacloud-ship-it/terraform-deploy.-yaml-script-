@@ -47,5 +47,5 @@ record_name = "www"
 # ASG
 web_files_s3_uri             ="s3:uri"
 service_provider_file_s3_uri = "s3://AppServiceProvider.php" 
-APPLICATION_CODE_FILE_NAME   = "name" 
+application_code_file_name   = "name" 
 
