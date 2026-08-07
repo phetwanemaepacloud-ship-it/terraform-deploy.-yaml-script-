@@ -64,79 +64,91 @@ variable "secret_name" {
 
 # RDS
 variable "multi_az_deployment" {
-description = "Enable Multi-AZ deployment
-type = bool
+  description = "Enable Multi-AZ deployment
+  type = bool
 
 variable "database_instance_identifier" { 
-description = "RDS instance identifier" 
-type = string
+  description = "RDS instance identifier" 
+  type = string
 
 variable "database_instance_class" {
-description = "RDS instance class (e.g., db.t3.micro)" 
-type = string
+  description = "RDS instance class (e.g., db.t3.micro)" 
+  type = string
 
 variable "database_engine" {
-description = "Database engine (mysql, postgres, mariadb)" 
-type = string
-
+  description = "Database engine (mysql, postgres, mariadb)" 
+  type = string
+ 
 variable "database_engine_version" {
-description = "Database engine version (e.g., 8.0.39)" 
-type = string
+  description = "Database engine version (e.g., 8.0.39)" 
+  type = string
 
 variable "publicly accessible" {
-description = "Make RDS publicly accessible"
-type = bool
+  description = "Make RDS publicly accessible"
+  type = bool
 
 #EC2
-variable "amazon_linux_ami_id" {
-description = "Amazon Linux AMI ID"
-type        = string
+  variable "amazon_linux_ami_id" {
+  description = "Amazon Linux AMI ID"
+  type        = string
 }
 variable "ecz_instance_type" {
-description = "EC2 instance type (e.g., t3.micro)"
-type        = string
+  description = "EC2 instance type (e.g., t3.micro)"
+  type        = string
 }
 variable "flyway_version" {
-description ="Flyway CLI version"
-type.       = string
+  description ="Flyway CLI version"
+  type.       = string
 }
 variable "sql_script_s3_uri" {
-description = "53 URI for SQL migration script"
-type        = string
+  description = "53 URI for SQL migration script"
+  type        = string
 }
 
 # ACM
 variable "domain_name" {
-description = "Primary domain name"
-type        = string
+  description = "Primary domain name"
+  type        = string
 }
 variable "alternative_names" {
-description = "Alternative domain names (SANs)"
-type        = string
+  description = "Alternative domain names (SANs)"
+  type        = string
 }
 
 # ALB
 variable "target_type" {
-description = "Target type (ip, instance, lambda)"
-type.       = string 
+  description = "Target type (ip, instance, lambda)"
+  type.       = string 
 }
 
 variable "health_check_path" {
-description = "Health check path"
-type        = string
-default     = "/" 
+  description = "Health check path"
+  type        = string
+  default     = "/" 
 }
 
 # SNS
 variable "operator_email" {
-description = "Email for SNS notifications"
-type        = #
+  description = "Email for SNS notifications"
+  type        = #
 } 
 
 # Route 53
 variable "record_name" {
-description = "Route 53 record name"
-type        = #
+  description = "Route 53 record name"
+  type        = #
 }
 
+# ASG
+variable "web_files_s3_uri" {
+  description = "S3 URI for application code"
+  type = 
+}
+variable "service_provider_file_s3_uri" {
+  description = "S3 URI for service provider file"
+  type = 
+}
+variable "application_code_file_name" ( description = "Application code file name"
+ type =
+}
 
