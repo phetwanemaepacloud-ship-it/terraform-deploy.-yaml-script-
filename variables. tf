@@ -1,91 +1,91 @@
 # Environment 
 variable "region" {
   description = "AWS region" 
-  type = string
-  default = value 
+  type        = string
+  default     = value 
 }
 
 variable "project_name" {
   description = "Project name"
-  type = string
-  default = value 
+  type        = string
+  default     = value 
 }
 
 variable "environment" {
   description = "Environment (dev, staging, prod)"
-  type = string
-  default = value 
+  type        = string
+  default     = value 
 }
 
 variable "project_directory" {
   description = "Project directory name" eg ____ app
-  type = string
-  default = value 
+  type        = string
+  default     = value 
 }
 
 # VPC
 variable "vpc_cidr" {
   description = "VPC CIDR block"
-  type = string
+  type        = string
 }
 
 variable "public_subnet_azl_cidr" { 
   description = "Public subnet AZ1 CIDR"
-  type = string
+  type        = string
 }
 
 variable "public_subnet_az2_cidr" { 
   description = "Public subnet AZ2 CIDR"
-  type = string
+  type        = string
 }
 
 variable "private_app_subnet_azl_cidr" { 
   description = "Private app subnet AZ1 CIDR" 
-  type = string 
+  type        = string 
 }
 variable "private_app_subnet_azz_cidr" { 
   description = "Private app subnet AZ2 CIDR" 
-  type = string 
+  type        = string 
 }
 variable "private_data_subnet_azl_cidr" { 
   description = "Private data subnet AZ1 CIDR" 
-  type = string 
+  type        = string 
 }
 variable "private_data_subnet_az2_cidr" { 
   description = "Private data subnet AZ2 CIDR"
-  type = string 
+  type        = string 
 }
 
 # Secret Management 
 variable "secret_name" {
   description = "Secret_Manager_secret_name" 
-  type = string
+  type        = string
 
 
 # RDS
 variable "multi_az_deployment" {
   description = "Enable Multi-AZ deployment
-  type = bool
+  type        = bool
 
 variable "database_instance_identifier" { 
   description = "RDS instance identifier" 
-  type = string
+  type        = string
 
 variable "database_instance_class" {
   description = "RDS instance class (e.g., db.t3.micro)" 
-  type = string
+  type        = string
 
 variable "database_engine" {
   description = "Database engine (mysql, postgres, mariadb)" 
-  type = string
+  type        = string
  
 variable "database_engine_version" {
   description = "Database engine version (e.g., 8.0.39)" 
-  type = string
+  type        = string
 
 variable "publicly accessible" {
   description = "Make RDS publicly accessible"
-  type = bool
+  type        = bool
 
 #EC2
   variable "amazon_linux_ami_id" {
@@ -130,25 +130,26 @@ variable "health_check_path" {
 # SNS
 variable "operator_email" {
   description = "Email for SNS notifications"
-  type        = #
+  type        = string 
 } 
 
 # Route 53
 variable "record_name" {
   description = "Route 53 record name"
-  type        = #
+  type        = string
 }
 
 # ASG
 variable "web_files_s3_uri" {
   description = "S3 URI for application code"
-  type = 
+  type        = string
 }
 variable "service_provider_file_s3_uri" {
   description = "S3 URI for service provider file"
-  type = 
+  type        = string
 }
-variable "application_code_file_name" ( description = "Application code file name"
- type =
+variable "application_code_file_name" ( 
+  description = "Application code file name"
+  type        = string
 }
 
