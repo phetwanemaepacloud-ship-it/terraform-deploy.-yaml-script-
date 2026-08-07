@@ -34,3 +34,18 @@ sql_script_s3_uri   = "____" :
 domain name       = "____.com"
 alternative names = "*. ____.com"
 
+# ALB
+target_type       = "instance"
+health_check_path ="/index.php"
+
+# SNS
+operator_email = "____"
+
+# Route 53
+record_name = "www"
+
+# ASG
+web_files_s3_uri             ="s3:uri"
+service_provider_file_s3_uri = "s3://AppServiceProvider.php" 
+APPLICATION_CODE_FILE_NAME   = "name" 
+
