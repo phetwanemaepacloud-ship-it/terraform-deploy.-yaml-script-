@@ -123,8 +123,8 @@ type.       = string
 
 variable "health_check_path" {
 description = "Health check path"
-type        =
-default     =
+type        = string
+default     = "/" 
 }
 
 # SNS
