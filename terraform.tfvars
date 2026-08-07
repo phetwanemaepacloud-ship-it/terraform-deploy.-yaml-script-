@@ -25,12 +25,12 @@ database_engine_version      = "8._._"
 publicly accessible          = "false" 
 
 # EC2
-amazon_linux_ami_id = #
-ec2_instance_type   = #
-flyway_version      = #
-sql_script_s3_uri   = #
+amazon_linux_ami_id = "ami" 
+ec2_instance_type   = "____" 
+flyway_version      = "____" 
+sql_script_s3_uri   = "____" :
 
 # ACM
-domain name       = #
-alternative names = #
+domain name       = "____.com"
+alternative names = "*. ____.com"
 
