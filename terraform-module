@@ -1,1 +1,3 @@
-
+# Create vpc
+module "vpc" {
+  source = "
