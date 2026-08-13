@@ -6,7 +6,7 @@ provider "aws" {
 default_tags {
   tags = {
     "Automation"  = "terraform"
-    "Project"     = "app"
+    "Project"     = "my-app"
     "Environment" = "dev"
 }
 }
