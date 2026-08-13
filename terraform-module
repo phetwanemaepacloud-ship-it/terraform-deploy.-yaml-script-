@@ -2,7 +2,7 @@
 terraform { 
   backend "s3" {
    bucket         = '____-terraform-remote-state" 
-   key            = "my-app/ecs/terraform.tfstate" 
+   key            = "terraform-module/my-app/ecs/terraform.tfstate" 
    region         = ____ hardcode it
    dynamodb_table = "terraform-state-lock"
    profile        = "cloud-projects"
