@@ -1,1 +1,15 @@
+#AWS provider 
+provider "aws" {
+  region = "____"
+  profile = "cloud-projects"
+
+default_tags {
+  tags = {
+    "Automation"  = "terraform"
+    "Project"     = "app"
+    "Environment" = "dev"
+}
+}
+}
+
 
