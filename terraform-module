@@ -1,1 +1,12 @@
+# S3 backend with DynamoDB state locking
+terraform { 
+  backend "s3" {
+   bucket         = '____-terraform-remote-state" 
+   key            = "app/ec2/terraform.tfstate" 
+   region         = ____ hardcode it
+   dynamodb_table = "terraform-state-lock"
+   profile        = "cloud-projects"
+  }
+}
 
+# Region is hardcoded into the state file and if ever a new infrastructure is being deployed it will not be affected.
