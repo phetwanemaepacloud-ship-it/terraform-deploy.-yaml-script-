@@ -1,26 +1,5 @@
 # VPC
 resource "aws_vpc" "vpc" {
-  cidr_block       = "10.0.0.0/16"
-  instance_tenancy = "default"
-
-  tags = {
-    Name = "____" app name
-  }
-}
-
-# Internet gateway for public subnet internet access 
-resource "aws_internet_gateway" "internet_gateway" { 
-  vpc_id = aws_vpc.vpc.id
-
-  tags = {
-    Name = "dev-igw"
-  }
-}
-
-===========================================================
-
-# VPC
-resource "aws_vpc" "vpc" {
   cidr_block           = var.vpc_cidr
   instance tenancy     = "default" 
   enable_dns_hostnames = true
