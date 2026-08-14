@@ -1,4 +1,6 @@
-
+#Create VPC
+module "vpc" {
+source 
 
 "Create Nat Gateway 
 module "nat-gateway" {
