@@ -36,3 +36,12 @@ module "security_groups" {
   vpc_id       = module.vpc.vpc_id
   vpc_cidr     = module.vpc.vpc_cidr
 } 
+
+# Create EC2 Instance Connect Endpoint
+module "eice" {
+  source "git::ssh://git@github.com/azeez-aos/modules.git//eice"
+  private_app_subnet_az2_id = module.vpc.private_app_subnet_az2_id 
+  eice_security_group_id    = module.security_groups.eice_security_group_id 
+  environment               = module.vpc.environment
+  project_name              = module.vpc.project_name
+} 
