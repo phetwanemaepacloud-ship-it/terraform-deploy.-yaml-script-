@@ -47,3 +47,7 @@ module "eice" {
 } 
 
 # Get secrets from Secrets Manager
+module "secrets-manager" {
+  source      = "git::ssh://git@github.com:phetwanemaepacloud-ship-itmodules.git//eice"
+  secret_name = "dev secrets" 
+} 
