@@ -14,7 +14,6 @@ module "vpc" {
   private_data_subnet_az2_cidr = 10.0.5.0/24
 } 
 
-
 # Create Nat Gateway 
 module "nat_gateway" {
   source                     = "git::ssh://git@github.com:phetwanemaepacloud-ship-it/modules.git//nat-gateway"
@@ -52,6 +51,13 @@ module "secrets-manager" {
   secret_name = "dev secrets" 
 } 
 
+# Get the latest engine version dynamically 
+data "aws_rds_engine_version" "latest" {
+  engine      = var.database_engine  # e.g "mysql", "postgress"
+  latest      = true
+  include_all = false # Only stable versions, not beta/preview
+}} 
+
 
 # Create RDS instance
 module "rds" {
@@ -70,4 +76,4 @@ module "rds" {
   database_security_group_id = module.security_groups.database_security_group_id
   availability_zone_1        = module.vpc.availability_zone_1 
   publicly accessible        = "false"
-} 
+}} 
