@@ -76,3 +76,13 @@ module "rds" {
   availability_zone_1        = module.vpc.availability_zone_1 
   publicly accessible        = "false"
 }} 
+
+# Create EC2 Instance Profile 
+module "ec2-Instance-profile" {
+  source       = "git::ssh://git@github.com:phetwanemaepacloud-ship-itmodules.git//ec2-instance-profile"
+  project_name = "my-app" 
+  environment  = "dev" 
+} 
+
+
+
