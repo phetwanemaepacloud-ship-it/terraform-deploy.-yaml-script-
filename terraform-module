@@ -51,3 +51,23 @@ module "secrets-manager" {
   source      = "git::ssh://git@github.com:phetwanemaepacloud-ship-itmodules.git//eice"
   secret_name = "dev secrets" 
 } 
+
+
+# Create RDS instance
+module "rds" {
+  source "git::ssh://git@github.com/azeez-aos/modules.git//rds" 
+  environment                = module.vpc.environment
+  project_name               = module.vpc.project_name
+  private_data_subnet_azl_id = module.vpc.private_data_subnet_azl_id 
+  private_data_subnet_az2_id = module.vpc.private_data_subnet_az2_id 
+  database_engine            = "mysql" 
+  database_engine_version    = "8.4.6"
+  multi_az_deployment        = "false"
+  database_instance_class    = "db.t3.micro"
+  rds_db_username            = module.secrets_manager.rds_db_username
+  rds_db_password            = module.secrets_manager.rds_db_password 
+  rds_db_name                = module.secrets_manager.rds_db_name
+  database_security_group_id = module.security_groups.database_security_group_id
+  availability_zone_1        = module.vpc.availability_zone_1 
+  publicly accessible        = "false"
+} 
