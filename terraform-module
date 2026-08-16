@@ -17,7 +17,7 @@ module "vpc" {
 
 # Create Nat Gateway 
 module "nat_gateway" {
-  source                     = "git::ssh://git@github.com/azeez-aos/modules.git//nat-gateway"
+  source                     = "git::ssh://git@github.com:phetwanemaepacloud-ship-it/modules.git//nat-gateway"
   environment                = module.vpc.environment
   public_subnet_az1.id       = module.vpc.public_subnet_az1_id
   internet_gateway           = module.vpc.internet_gateway
@@ -30,7 +30,7 @@ module "nat_gateway" {
 
 # Create Security Groups
 module "security_groups" {
-  source="git::ssh://git@github.com/azeez-aos/modules.git//security-groups"
+  source       = "git::ssh://git@github.com:phetwanemaepacloud-ship-it/modules.git//security-groups"
   environment  = module.vpc.environment
   project_name = module.vpc.project_name
   vpc_id       = module.vpc.vpc_id
@@ -39,9 +39,11 @@ module "security_groups" {
 
 # Create EC2 Instance Connect Endpoint
 module "eice" {
-  source "git::ssh://git@github.com/azeez-aos/modules.git//eice"
+  source                    = "git::ssh://git@github.com:phetwanemaepacloud-ship-itmodules.git//eice"
   private_app_subnet_az2_id = module.vpc.private_app_subnet_az2_id 
   eice_security_group_id    = module.security_groups.eice_security_group_id 
   environment               = module.vpc.environment
   project_name              = module.vpc.project_name
 } 
+
+# Get secrets from Secrets Manager
