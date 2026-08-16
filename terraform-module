@@ -58,7 +58,6 @@ data "aws_rds_engine_version" "latest" {
   include_all = false # Only stable versions, not beta/preview
 }} 
 
-
 # Create RDS instance
 module "rds" {
   source "git::ssh://git@github.com/azeez-aos/modules.git//rds" 
@@ -84,5 +83,22 @@ module "ec2-Instance-profile" {
   environment  = "dev" 
 } 
 
+# Create EC2 instance for database migration
+module "data_migrate_ec2" {
+  source = "git::ssh://git@github.com:phetwanemaepacloud-ship-itmodules.git//data-migrate" 
+  amazon_linux_ami_id                 = "ami-0532be01f26a3de55"
+  ec2_instance_type                   = "t2.micro"
+  private_app_subnet_azl_id           = module.vpc.private_app_subnet_azl_id
+  db_migrate_server_security_group_id = module.security_groups.db_migrate_server_security_group_id
+  ec2_instance_profile_role_name      = module.ec2_instance_profile.c2_instance_profile_role_name
+  flyway_version                      = "11.19.1"
+  sql_script_s3_uri"                  = "s3://dev-my-app-webfiles/project-2-assets/my-app.sql"
+  rds_endpoint                        = module.rds.rds_endpoint
+  rds_db_name                         = module.secrets_manager.rds_db_name
+  rds_db_username                     = module.secrets_manager.rds_db_username
+  rds_db_password                     = module.secrets_manager.rds_db_password 
+  environment                         = module.vpc.environment
+  project_name.                       = module.vpc.project_name
+} 
 
 
