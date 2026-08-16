@@ -67,7 +67,6 @@ module "rds" {
   private_data_subnet_azl_id = module.vpc.private_data_subnet_azl_id 
   private_data_subnet_az2_id = module.vpc.private_data_subnet_az2_id 
   database_engine            = "mysql" 
-  database_engine_version    = "8.4.11" 
   multi_az_deployment        = "false"
   database_instance_class    = "db.t3.micro"
   rds_db_username            = module.secrets_manager.rds_db_username
