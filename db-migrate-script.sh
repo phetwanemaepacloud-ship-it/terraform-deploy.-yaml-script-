@@ -55,7 +55,9 @@ SECRET_JSON-$(aws secretsmanager get-secret-value \
 # Parse username and password from JSON
 export RDS_DB_PASSWORD=$(echo $SECRET JSON | jq -r 'password')
 
+=======================================
 # Install Flyway and run database migrations
+=======================================
 
 # Update all packages
 sudo yum update -y
@@ -78,3 +80,6 @@ sudo flyway -url-jdbc:mysql://${RDS ENDPOINT):3306/${RDS_DB_NAME} PallowPublicKe
 -password="${RDS_DB_PASSWORD}" \
 -locations filesystem:sql\
 migrate
+
+# Then shut down after waiting for 7 minutes 
+sudo shutdown h7 +7
