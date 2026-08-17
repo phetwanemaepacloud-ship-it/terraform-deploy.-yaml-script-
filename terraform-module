@@ -107,3 +107,17 @@ module "ssl_certificate" {
   domain_name     = "myapp.com"
 alternative_names = "*.myapp.com"
 } 
+
+# Create Application Load Balancer
+"application_load_balancer" { 
+source                ="git::ssh://git@github.com:phetwanemaepacloud-ship-it/modules.git//alb"
+  environment           = module.vpc.environment
+  project_name          = module.vpc.project_name
+  alb_security_group_id = module.security_groups.alb_security_group_id 
+  public_subnet_azl_id  = module.vpc.public_subnet_az1_id 
+  public_subnet_az2_id  = module.vpc.public_subnet_az2_id 
+  target_type           = "ip"
+  vpc_id                = module.vpc.vpc_id
+  health_check_path     = "/index.php"
+  certificate_arn       = module.ssl_certificate.certificate_arn
+} 
