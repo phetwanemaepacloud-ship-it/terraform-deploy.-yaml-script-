@@ -101,4 +101,9 @@ module "data_migrate_ec2" {
   project_name.                       = module.vpc.project_name
 } 
 
-
+#Reequest public SSL certificate from ACM 
+module "ssl_certificate" {
+  source          = "git::ssh://git@github.com:phetwanemaepacloud-ship-it/modules.git//acm"
+  domain_name     = "myapp.com"
+alternative_names = "*.myapp.com"
+} 
