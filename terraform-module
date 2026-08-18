@@ -166,3 +166,9 @@ source="git::ssh://git@github.com:phetwanemaepacloud-ship-it//route53"
   application_load_balancer_dns_name = module.application_load_balancer.application_load_balancer_dns_name
   application_load_balancer_zone_id  = module.application_load_balancer.application_load_balancer_zone_id
 }
+
+
+#Website URL
+output "website_url" {
+  value = join("", ["https://", module.route_53. record_name, ".",module.ssl_certificate.domain_name"]) 
+} 
