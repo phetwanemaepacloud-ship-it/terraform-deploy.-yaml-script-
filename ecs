@@ -1,25 +1,5 @@
 # ECS
-variable "environment" {
-description = "Environment (dev, staging, prod) 
-type        = string
-} 
-
-variable "project_name" {
-description = "Project name"
-type        = string
-} 
-
-variable "ecs_task_execution_role_arn" {
-description = "The ARN of the ECS task execution role" 
-type        = string
-} 
-
-variable "ecs_task_role_arn" {
-description = "The ARN of the ECS task role"
-type        = string
-} 
-
-variable "architecture" {
-description = "CPU architecture (X86_64 or ARM64)"
-type        = string
+output "ecs_sevice"  {
+  description = "The ECS Service" 
+  value       =
 } 
