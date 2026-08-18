@@ -141,3 +141,20 @@ source                ="git::ssh://git@github.com:phetwanemaepacloud-ship-it/mod
   environment           = module.vpc.environment
   project_name          = module.vpc.project_name
 } 
+
+
+# Create ECS
+module "ecs" {
+  source                       = "git::ssh://git@github.com/azeez-aos/modules.git//ecs"
+  environment                  = module.vpc.environment
+  project_name                 = module.vpc.project_name
+  ecs_task_execution_role_arn  = module.ecs_role.ecs_task_execution_role_arn
+  ecs_task_role_arn            = module.ecs_role.ecs_task_role_arn
+  architecture                 = "X86_64"
+  container_image              = "651783246143.dkr.ecr." region_____".amazonaws.com/app:latest"
+  region                       = module.vpc.region
+  private_app_subnet_az1_id    = module.vpc.private_app_subnet_az1_id private_app_subnet_az2_id = module.vpc.private_app_subnet_az2_id
+  app_server_security_group_id = module.security_groups.app_server_security_group_id 
+  alb_target_group_arn         = module.application_load_balancer.alb_target_group_arn 
+  depends_on                   = [module.data_migrate_ec2]
+} 
