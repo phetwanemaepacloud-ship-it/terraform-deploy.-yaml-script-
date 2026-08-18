@@ -110,7 +110,7 @@ alternative_names = "*.myapp.com"
 
 # Create Application Load Balancer
 "application_load_balancer" { 
-source                ="git::ssh://git@github.com:phetwanemaepacloud-ship-it/modules.git//alb"
+source                  ="git::ssh://git@github.com:phetwanemaepacloud-ship-it/modules.git//alb"
   environment           = module.vpc.environment
   project_name          = module.vpc.project_name
   alb_security_group_id = module.security_groups.alb_security_group_id 
@@ -137,7 +137,7 @@ source="git::ssh://git@github.com:phetwanemaepacloud-ship-it//alb"
 
 # Create ECS Role
 module "ecs_role" { 
-source                ="git::ssh://git@github.com:phetwanemaepacloud-ship-it/modules.git//alb"
+source                  ="git::ssh://git@github.com:phetwanemaepacloud-ship-it/modules.git//alb"
   environment           = module.vpc.environment
   project_name          = module.vpc.project_name
 } 
