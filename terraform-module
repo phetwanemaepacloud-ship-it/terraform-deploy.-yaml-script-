@@ -158,3 +158,11 @@ module "ecs" {
   alb_target_group_arn         = module.application_load_balancer.alb_target_group_arn 
   depends_on                   = [module.data_migrate_ec2]
 } 
+
+# Create Application Load Balancer module "application_load_balancer"
+source="git::ssh://git@github.com:phetwanemaepacloud-ship-it//route53"
+  environment                        = module.vpc.environment
+  project_name                       = module.vpc.project_name
+  application_load_balancer_dns_name = module.application_load_balancer.application_load_balancer_dns_name
+  application_load_balancer_zone_id  = module.application_load_balancer.application_load_balancer_zone_id
+}
