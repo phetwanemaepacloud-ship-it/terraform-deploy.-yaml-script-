@@ -134,3 +134,10 @@ source="git::ssh://git@github.com:phetwanemaepacloud-ship-it//alb"
   health_check_path     = "/index.php"
   certificate_arn       = module.ssl_certificate.certificate_arn
 } 
+
+# Create ECS Role
+module "ecs_role" { 
+source                ="git::ssh://git@github.com:phetwanemaepacloud-ship-it/modules.git//alb"
+  environment           = module.vpc.environment
+  project_name          = module.vpc.project_name
+} 
