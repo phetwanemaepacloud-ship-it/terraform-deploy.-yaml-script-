@@ -496,11 +496,13 @@ Directory responsibility summary
 Terraform Deployment
 │
 
+
 ├── Configuration
 │   ├── provider.tf
 │   ├── variables.tf
 │   └── terraform.tfvars
 │
+
 
 ├── Networking
 │   ├── vpc.tf
@@ -516,9 +518,11 @@ Terraform Deployment
 │   └── eice.tf
 │
 
+
 ├── Application
 │   ├── backend.tf
 │   └── alb.tf
+
 
 
 ├── Database
@@ -527,12 +531,15 @@ Terraform Deployment
 │   └── db-migrate-script.sh
 
 
+
 ├── Messaging
 │   └── sns.tf
 
 
+
 ├── Reusable Infrastructure
 │   └── terraform-module/
+
 
 
 ├── Deployment Results
