@@ -102,6 +102,8 @@ Contains Terraform modules used to package reusable infrastructure logic so the 
 .gitignore	
 Source control	
 Prevents files that should not be committed to Git from being tracked, such as Terraform state files, local variables, credentials, temporary files, and generated artifacts.
+==========================================================================================
+
 
 
 Deployment flow
@@ -364,13 +366,14 @@ can provide important information needed by developers, operators, CI/CD pipelin
 
 Examples may include:
 
-
 Load balancer DNS name.
 Application URL.
 VPC ID.
 RDS endpoint.
 Resource IDs.
 Other deployment-specific values.
+==========================================================================================
+
 
 
 Recommended Terraform deployment sequence
@@ -425,7 +428,7 @@ Although Terraform automatically handles dependencies, a normal deployment workf
 16. outputs.tf
 
 Note: This diagram represents a logical deployment flow. Terraform does not execute .tf files sequentially; it evaluates all configuration and determines the resource creation order from dependencies.
-
+========================================================================================
 
 
 Common Terraform commands
@@ -470,12 +473,10 @@ terraform destroy
 
 
 Warning: terraform destroy can permanently remove infrastructure and data. In particular, verify the RDS deletion/protection configuration before using it against a production environment.
-
+===========================================================================================
 
 Security considerations
-
 Before committing or deploying this infrastructure:
-
 
 Do not commit AWS access keys.
 Do not commit database passwords or application secrets.
