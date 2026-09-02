@@ -495,6 +495,7 @@ Directory responsibility summary
 
 Terraform Deployment
 │
+
 ├── Configuration
 │   ├── provider.tf
 │   ├── variables.tf
