@@ -500,11 +500,13 @@ Terraform Deployment
 │   ├── variables.tf
 │   └── terraform.tfvars
 │
+
 ├── Networking
 │   ├── vpc.tf
 │   ├── nat-gateway.tf
 │   └── route53.tf
 │
+
 ├── Security
 │   ├── security-groups.tf
 │   ├── ec2-profile-role.tf
@@ -512,24 +514,30 @@ Terraform Deployment
 │   ├── acm.tf
 │   └── eice.tf
 │
+
 ├── Application
 │   ├── backend.tf
 │   └── alb.tf
 │
+
 ├── Database
 │   ├── rds.tf
 │   ├── db-migrate-server.tf
 │   └── db-migrate-script.sh
 │
+
 ├── Messaging
 │   └── sns.tf
 │
+
 ├── Reusable Infrastructure
 │   └── terraform-module/
 │
+
 ├── Deployment Results
 │   └── outputs.tf
 │
+
 └── Source Control
     └── .gitignore
 
